@@ -1,35 +1,47 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
+import { FaShoppingCart } from 'react-icons/fa';
+import useCart from "../../hooks/useCart";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
 
-    const navOption = <>
+  const [cart] = useCart()
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+  const navOption = (
+    <>
       <li>
-                <a>Item 1</a>
-              </li>
-              <li tabIndex={0}>
-                <a className="justify-between">
-                  Parent
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                  </svg>
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
-    </> 
+        <Link to="/">Home</Link>
+        <Link to="/menu">Our Menu</Link>
+        <Link to="/secret">Setret</Link>
+        <Link to="/order/salad">Order Food</Link>
+        <Link to="/dashbord/myCart">
+          <button className="btn gap-2">
+            <FaShoppingCart className="text-2xl" />
+            <div className="badge badge-secondary">{cart?.length || 0}</div>
+          </button>
+        </Link>
+        {user ? (
+          <>
+            <span>{user.displayName}</span>
+            <button onClick={handleLogOut} className="btn btn-primary">
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            {" "}
+            <Link to="/login">Login</Link>
+          </>
+        )}
+      </li>
+    </>
+  );
 
   return (
     <div>
@@ -56,15 +68,15 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-            {navOption}
+              {navOption}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
+            Bistro Boss
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {navOption}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navOption}</ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Get started</a>
