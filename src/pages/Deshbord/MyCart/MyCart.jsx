@@ -91,7 +91,7 @@ const MyCart = () => {
                     </td>
                     <td>{row.price}</td>
                     <th>
-                      <button onClick={() => handleDelete(row)} className="btn btn-ghost bg-red text-white btn-lg"><AiFillDelete /></button>
+                      <button onClick={() => handleDelete(row)} className="btn btn-ghost bg-[red]text-white btn-lg"><AiFillDelete /></button>
                     </th>
                   </tr> )
             }
