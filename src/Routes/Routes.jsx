@@ -12,7 +12,9 @@ import MyCart from "../pages/Deshbord/MyCart/MyCart";
 import AllUsers from "../pages/Deshbord/AllUsers/AllUsers";
 import AddItem from "../pages/Deshbord/AddItem/AddItem";
 import ManageItems from "../pages/Deshbord/ManageItems/ManageItems";
-import AdminRoute from "./AdminRoute";
+import Payment from "../pages/Deshbord/Payment/Payment";
+import UsersHome from "../pages/Deshbord/UsersHome";
+import AdminHome from "../pages/Deshbord/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
     element: <PrivateRoute><Dashbord></Dashbord></PrivateRoute>,
     children: [
       {
+        path: 'userHome',
+        element: <UsersHome></UsersHome>
+      },
+      {
         path: 'myCart',
         element: <MyCart></MyCart>
       },
@@ -58,12 +64,20 @@ const router = createBrowserRouter([
         element: <AllUsers></AllUsers>
       },
       {
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+      },
+      {
         path: 'addItem',
         element: <AddItem></AddItem>
       },
       {
         path: 'manageItem',
         element: <ManageItems></ManageItems>,
+      },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
       }
     ]
   }

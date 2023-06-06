@@ -2,7 +2,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../component/SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure ";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const ManageItems = () => {

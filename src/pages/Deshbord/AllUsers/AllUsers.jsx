@@ -3,14 +3,15 @@ import { Helmet } from "react-helmet-async";
 import { AiFillDelete } from "react-icons/ai";
 import { RiAdminFill } from "react-icons/ri";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure ";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
   const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
-    return res.data();
+    return res.data;
   });
+  
 
   const handleMakeAdmin = (user) =>{
      fetch(`http://localhost:5000/users/admin/${user._id}`,
@@ -33,6 +34,7 @@ const AllUsers = () => {
      })
   }
 
+  // eslint-disable-next-line no-unused-vars
   const handleDelete = (user) => {
 
   };

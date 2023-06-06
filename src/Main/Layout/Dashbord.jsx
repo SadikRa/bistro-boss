@@ -5,11 +5,13 @@ import { TbBrandBooking } from "react-icons/tb";
 import { FiMenu } from "react-icons/fi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const Dashbord = () => {
   const [cart] = useCart()
-  const isAdmin  = true;
+  // const [ isAdmin ] = useAdmin()
+  const isAdmin = true
 
 
   return (
@@ -35,7 +37,7 @@ const Dashbord = () => {
         {
           isAdmin ? <>
             <li>
-            <NavLink to={'/dashbord/home'}>
+            <NavLink to={'/dashbord/adminHome'}>
               <FaHome className="text-2xl" /> Admin Home
             </NavLink>
           </li>
@@ -65,7 +67,7 @@ const Dashbord = () => {
           </> :
           <>
             <li>
-            <NavLink to={'/dashbord/home'}>
+            <NavLink to={'/dashbord/userHome'}>
               <FaHome className="text-2xl" /> User Home
             </NavLink>
           </li>
